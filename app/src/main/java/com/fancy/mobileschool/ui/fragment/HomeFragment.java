@@ -2,8 +2,6 @@ package com.fancy.mobileschool.ui.fragment;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.AttributeSet;
@@ -107,9 +105,6 @@ public class HomeFragment extends Fragment {
         tv.setBackgroundColor(R.color.schedule_background);
         tv.setWidth(weekRowBlockWidth*2);
         fl.addView(tv);
-
-
-
 
         classLayout.addView(fl);
     }
