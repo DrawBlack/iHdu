@@ -32,7 +32,7 @@ public class HomeFragment extends Fragment {
 
     private static final int FIRST_BLOCK_WIDTH = 62;
 
-    private static final int FIRST_BLOCK_HEIGHT = 100;
+    private static final int FIRST_BLOCK_HEIGHT = 120;
 
     private int classNumBlockHeight;
 

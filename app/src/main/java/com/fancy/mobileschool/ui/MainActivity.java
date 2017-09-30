@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements TabHost.OnTabChan
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
         return true;
     }
 
