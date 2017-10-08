@@ -2,11 +2,15 @@ package com.fancy.mobileschool.ui.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.fancy.mobileschool.R;
+import com.fancy.mobileschool.ui.adapt.MessageAdapt;
+import com.fancy.mobileschool.ui.ui_componet.DividerItemDecoration;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -15,6 +19,8 @@ import com.fancy.mobileschool.R;
  * create an instance of this fragment.
  */
 public class MessageFragment extends Fragment {
+
+    private RecyclerView recyclerView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -26,7 +32,12 @@ public class MessageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_message, container, false);
+        View messageView = inflater.inflate(R.layout.fragment_message, container, false);
+        recyclerView = (RecyclerView) messageView.findViewById(R.id.my_recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setAdapter(new MessageAdapt(getActivity()));
+        recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
+        return messageView;
     }
 
 }
