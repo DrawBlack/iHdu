@@ -1,4 +1,4 @@
-package com.fancy.mobileschool.ui.ui_componet;
+package com.fancy.mobileschool.ui.widget;
 
 
 
@@ -9,8 +9,6 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.State;
-import android.util.Log;
 import android.view.View;
 
 

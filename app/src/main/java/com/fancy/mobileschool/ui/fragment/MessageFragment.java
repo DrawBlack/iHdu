@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import com.fancy.mobileschool.R;
 import com.fancy.mobileschool.ui.adapt.MessageAdapt;
-import com.fancy.mobileschool.ui.ui_componet.DividerItemDecoration;
+import com.fancy.mobileschool.ui.widget.DividerItemDecoration;
 
 /**
  * A simple {@link Fragment} subclass.
