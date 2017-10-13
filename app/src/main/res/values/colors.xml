@@ -9,4 +9,10 @@
     <color name="schedule_background">#DDDDDD</color>
     <color name="black">#000000</color>
 
+    <color name="classColor1">#99e4bf</color>
+    <color name="classColor2">#33CCFF</color>
+    <color name="classColor3">#95d7f4</color>
+    <color name="classColor4">#f9d966</color>
+    <color name="classColor5">#a5d7e9</color>
+    <color name="classColor6">#e7d0c6</color>
 </resources>

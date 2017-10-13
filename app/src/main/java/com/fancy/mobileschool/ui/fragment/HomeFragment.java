@@ -15,6 +15,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.fancy.mobileschool.R;
+import com.fancy.mobileschool.entity.StudentClass;
+import com.fancy.mobileschool.ui.widget.ClassDialog;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,6 +42,15 @@ public class HomeFragment extends Fragment {
     private int classNumBlockHeight;
 
     private int weekRowBlockWidth;
+
+    private int[] tvRes = new int[] {
+            R.drawable.corners_tv1,
+            R.drawable.corners_tv4,
+            R.drawable.corners_tv2,
+            R.drawable.corners_tv3,
+            R.drawable.corners_tv5,
+            R.drawable.corners_tv6
+    };
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -84,7 +98,7 @@ public class HomeFragment extends Fragment {
         int height = metrics.heightPixels;
         for (int i = 1 ; i <=12 ; i++) {
             TextView textView = new BorderTextView(getContext());
-            classNumBlockHeight = (height - 100)/10;
+            classNumBlockHeight = (height - 100)/13;
             textView.setHeight(classNumBlockHeight);
             textView.setWidth(FIRST_BLOCK_WIDTH);
             textView.setText(i + "");
@@ -94,21 +108,48 @@ public class HomeFragment extends Fragment {
     }
 
     private void drawGridView(){
-        FrameLayout fl = new FrameLayout(getActivity());
-        FrameLayout.LayoutParams flp = new FrameLayout.LayoutParams(weekRowBlockWidth, classNumBlockHeight*3 - 10);
-        flp.setMargins(0, classNumBlockHeight*2 + 5, 0, 0);
-        fl.setLayoutParams(flp);
-        //fl.setBackgroundColor(R.color.tab_color);
 
-        TextView tv = new TextView(getActivity());
-        tv.setText("工程经济学@第十二教研楼305");
-        tv.setBackgroundColor(R.color.schedule_background);
-        tv.setWidth(weekRowBlockWidth*2);
-        fl.addView(tv);
+        List<StudentClass> classes = new ArrayList<>();
+        classes.add(new StudentClass(1, 3, 3, "工程经济学"));
+        classes.add(new StudentClass(4, 6, 4, "软件过程与管理"));
+        classes.add(new StudentClass(1, 6, 4, "软件需求分析"));
+        classes.add(new StudentClass(3, 1, 2, "软件设计与体系架构"));
+        classes.add(new StudentClass(3, 6, 2, "形式与政策"));
+        classes.add(new StudentClass(1, 10, 2, "计算机网络实验"));
+        classes.add(new StudentClass(2, 6, 4, "安卓移动开发"));
 
-        classLayout.addView(fl);
+        int count = classes.size();
+        for (int i = 0; i < count; i++) {
+
+            StudentClass studentClass = classes.get(i);
+            FrameLayout fl = new FrameLayout(getActivity());
+            FrameLayout.LayoutParams flp = new FrameLayout.LayoutParams(weekRowBlockWidth - 10 , classNumBlockHeight*studentClass.getClassNum() - 10);
+            flp.setMargins( (studentClass.getDay() - 1)*weekRowBlockWidth + 5 , classNumBlockHeight*(studentClass.getStartClassNum() - 1) + 5, 0, 0);
+            fl.setLayoutParams(flp);
+
+            TextView tv = new TextView(getActivity());
+            tv.setText(studentClass.getClassName());
+            tv.setBackgroundResource(tvRes[i%6]);
+            tv.setWidth(weekRowBlockWidth);
+            fl.addView(tv);
+
+            setItemViewOnClickLisener(fl, (String) tv.getText());
+
+            classLayout.addView(fl);
+        }
+
     }
 
+    private void setItemViewOnClickLisener(View view, final String classInfo) {
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ClassDialog dialog = new ClassDialog(getActivity(), classInfo);
+                dialog.show();
+            }
+        });
+    }
 
 }
 
