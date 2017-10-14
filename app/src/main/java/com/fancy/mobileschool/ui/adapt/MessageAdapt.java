@@ -16,7 +16,7 @@ import com.fancy.mobileschool.ui.MessageDetailActivity;
  * self adapt for RecyclerView
  */
 
-@SuppressWarnings("all")
+
 public class MessageAdapt extends RecyclerView.Adapter<MessageViewHolder> {
 
     private Context context;
@@ -40,7 +40,7 @@ public class MessageAdapt extends RecyclerView.Adapter<MessageViewHolder> {
         }else
             holder.getIcon().setImageResource(R.drawable.icon);
 
-        holder.getMessage().setText("这一一条信息");
+        holder.getMessage().setText("这是一条信息");
     }
 
     @Override
@@ -48,9 +48,10 @@ public class MessageAdapt extends RecyclerView.Adapter<MessageViewHolder> {
         return 15;
     }
 
+
 }
 
-@SuppressWarnings("all")
+
 class MessageViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
     private ImageView icon;
