@@ -23,6 +23,8 @@ public class MessageFragment extends Fragment {
 
     private RecyclerView recyclerView;
 
+    private MessageAdapt adapter;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,15 +36,18 @@ public class MessageFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View messageView = inflater.inflate(R.layout.fragment_message, container, false);
+        adapter = new MessageAdapt(getActivity());
+
         recyclerView = (RecyclerView) messageView.findViewById(R.id.my_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setAdapter(new MessageAdapt(getActivity()));
+        recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
 
         final SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) messageView.findViewById(R.id.message_refresh);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
